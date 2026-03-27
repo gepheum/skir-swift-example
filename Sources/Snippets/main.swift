@@ -46,6 +46,12 @@ let john = Service_skir.User(
 
 print(john.name)  // John Doe
 
+print(john)
+// {
+//    "userId": 42,
+//    ...
+// }
+
 // `defaultValue` gives you a value with every field set to its zero value
 // (0, "", empty array, …):
 print(Service_skir.User.defaultValue.name)  // (empty string)
@@ -57,6 +63,10 @@ print(Service_skir.User.defaultValue.userId)  // 0
 let jane = Service_skir.User.partial(userId: 43, name: "Jane Doe")
 print(jane.quote)  // (empty string — defaulted)
 print(jane.pets.count)  // 0 — defaulted
+
+// Structs can be compared with ==
+print(Service_skir.User.defaultValue == Service_skir.User.partial())
+// true
 
 // Create a modified copy without mutating the original using `copy`.
 // Only the fields wrapped in `.set(…)` change; the rest are kept as-is.
@@ -73,16 +83,13 @@ print(john.name)  // John Doe (john is unchanged)
 // Every Skir enum has an `.unknown` case added automatically (the default
 // value).
 
-let statuses: [Service_skir.SubscriptionStatus] = [
+let _: [Service_skir.SubscriptionStatus] = [
   .unknownValue,  // default "unknown" value
+  .unknown(unrecognized: nil),  // same as the above
   .free,
   .premium,
   .trial(.partial(startTime: Date())),  // wrapper variant carrying a value
 ]
-
-for status in statuses {
-  print(status)
-}
 
 // =============================================================================
 // ENUM MATCHING

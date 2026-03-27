@@ -48,7 +48,7 @@ print(john.name)  // John Doe
 
 print(john)
 // {
-//    "userId": 42,
+//    "user_id": 42,
 //    ...
 // }
 

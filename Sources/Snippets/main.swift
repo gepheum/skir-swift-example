@@ -3,7 +3,7 @@
 // Run with: swift run Snippets
 
 import Foundation
-import Generated
+import MyLib
 import SkirClient
 
 // =============================================================================

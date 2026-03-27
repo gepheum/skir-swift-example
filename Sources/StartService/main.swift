@@ -7,7 +7,7 @@
 // Use CallService to send requests to this service.
 
 import Foundation
-import Generated
+import MyLib
 import SkirClient
 import Vapor
 

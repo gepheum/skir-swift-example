@@ -11,25 +11,30 @@ let package = Package(
         .package(url: "https://github.com/vapor/vapor", from: "4.115.0"),
     ],
     targets: [
-        // Generated Swift code from .skir files. All other targets depend on this.
+        // Shared module consumed by executable targets.
         .target(
-            name: "Generated",
+            name: "MyLib",
             dependencies: [
                 .product(name: "SkirClient", package: "skir-swift-client"),
             ],
-            path: "Sources/skirout"
+            path: "Sources",
+            exclude: [
+                "CallService",
+                "Snippets",
+                "StartService",
+            ]
         ),
         // Showcases how to read and write generated data types.
         .executableTarget(
             name: "Snippets",
-            dependencies: ["Generated"],
+            dependencies: ["MyLib"],
             path: "Sources/Snippets"
         ),
         // Starts a Skir service on http://localhost:8787/myapi.
         .executableTarget(
             name: "StartService",
             dependencies: [
-                "Generated",
+                "MyLib",
                 .product(name: "Vapor", package: "vapor"),
             ],
             path: "Sources/StartService"
@@ -37,7 +42,7 @@ let package = Package(
         // Sends RPCs to the running service.
         .executableTarget(
             name: "CallService",
-            dependencies: ["Generated"],
+            dependencies: ["MyLib"],
             path: "Sources/CallService"
         ),
     ]

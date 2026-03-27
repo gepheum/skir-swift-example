@@ -7,7 +7,7 @@
 // Make sure the service is running first (using StartService or StartService).
 
 import Foundation
-import Generated
+import MyLib
 import SkirClient
 
 @main

@@ -30,7 +30,7 @@ let package = Package(
             dependencies: ["MyLib"],
             path: "Sources/Snippets"
         ),
-        // Starts a Skir service on http://localhost:8787/myapi.
+        // Starts a SkirRPC service on http://localhost:8787/myapi.
         .executableTarget(
             name: "StartService",
             dependencies: [

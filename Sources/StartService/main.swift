@@ -1,4 +1,4 @@
-// Starts a Skir service on http://localhost:8787/myapi using Vapor.
+// Starts a SkirRPC service on http://localhost:8787/myapi using Vapor.
 //
 // Run with:
 //
@@ -47,7 +47,7 @@ struct StartService {
 
     app.http.server.configuration.port = 8787
 
-    // Shared handler: delegates to the Skir service dispatcher.
+    // Shared handler: delegates to the SkirRPC service dispatcher.
     // GET requests carry the body in the query string (Skir Studio);
     // POST requests carry it in the request body (programmatic clients).
     let handler: @Sendable (Request) async -> Response = { req in

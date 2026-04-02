@@ -1,4 +1,4 @@
-// Sends RPCs to the Skir service. See StartService for how to start it.
+// Sends RPCs to the SkirRPC service. See StartService for how to start it.
 //
 // Run with:
 //
